@@ -1,0 +1,180 @@
+﻿@model IEnumerable<AutoPlus1017.Entities.Car>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore
+@using AutoPlus1017.Data
+@using AutoPlus1017.Entities
+
+@inject SignInManager<Users> SignInManager
+@inject UserManager<Users> UserManager
+<style>
+    img {
+        object-fit: cover;
+        height: 15.5rem;
+    }
+
+    .card {
+        width: 23rem;
+        margin: 1rem;
+    }
+</style>
+@if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "admin"))
+{
+    <h1>Коли</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-outline-success">Създай нов</a>
+    </p>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+
+                <div class="card">
+                    <img class="card-img-top" src="@item.ThumbnailImagePath" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Brand @item.Model</h5>
+                        <p class="card-text">Описание: @item.Description</p>
+                        <p class="card-text">Година: @item.YearProduction</p>
+                    </div>
+                    <div class="card-body">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary">Редактиране</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-secondary">Детайли</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger text">Изтриване</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Brand)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YearProduction)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Condition)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fuel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HorsePowers)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ThumbnailImagePath)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>*@
+    @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearProduction)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Condition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fuel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HorsePowers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThumbnailImagePath)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }*@
+    @*</tbody>
+        </table>*@
+}
+else if (SignInManager.IsSignedIn(User) == true)
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+
+                <div class="card">
+                    <img class="card-img-top" src="@item.ThumbnailImagePath" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Brand @item.Model</h5>
+                        <p class="card-text">Описание: @item.Description</p>
+                        <p class="card-text">Година: @item.YearProduction</p>
+                    </div>
+                    <div class="card-body">
+
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Детайли</a>
+                        <a asp-controller="Orders" asp-action="Create" class="btn btn-outline-success text">Купи</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+
+                <div class="card">
+                    <img class="card-img-top" src="@item.ThumbnailImagePath" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Brand @item.Model</h5>
+                        <p class="card-text">Описание: @item.Description</p>
+                        <p class="card-text">Година: @item.YearProduction</p>
+                    </div>
+                    <div class="card-body">
+                        
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Детайли</a>
+                        <a asp-controller="Orders"asp-action="Create" class="btn btn-outline-success text">Купи</a>                        
+                   </div>
+                </div>
+            </div>
+        }
+    </div>
+}

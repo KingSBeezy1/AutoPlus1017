@@ -1,6 +1,30 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Всичко което трябва да знаете за нашия магазин";
 }
 <h1>@ViewData["Title"]</h1>
+<style>
+    .hero {
+        position: relative
+    }
 
-<p>Use this page to detail your site's privacy policy.</p>
+    .hero-heading {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        text-align: center;
+        width: 350px;
+        height: 250px;
+        background-color: rgba(0,0,0,0.4);
+        padding: 10px;
+    }
+
+    .hero-heading-text {
+        color: white;
+        font-size: 1.8rem;
+    }
+</style>
+<div class="hero-heading">
+    <h2 class="hero-heading-text">Ако си търсите автомобил, нашият магазин <strong> AutoPlus</strong> е вашето място</h2>
+    <p>Автосалон „Авто Плюс“ се занимава с продажба на автомобили. </p>
+
+</div>

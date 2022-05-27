@@ -51,8 +51,8 @@ namespace AutoPlus1017.Areas.Identity.Pages.Account
          
             [Display(Name = "Име")]
             public string FirstName { get; set; }
-            [Required]
-            [StringLength(100,MinimumLength = 6, ErrorMessage = "Въведете фамилия")]
+            [Required(ErrorMessage = "Въведете фамилия")]
+            [StringLength(100, MinimumLength = 1, ErrorMessage = "Паролата трябва да съдържа най-малко 6 символа")]
             
             [Display(Name = "Фамилия")]
             public string LastName { get; set; }

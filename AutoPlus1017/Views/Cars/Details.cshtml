@@ -1,13 +1,13 @@
 ﻿@model AutoPlus1017.Entities.Car
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Детайли на автомобила";
 }
 
-<h1>Details</h1>
+<h1>Детайли</h1>
 
 <div>
-    <h4>Car</h4>
+    <h4>Автомобил</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -73,6 +73,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Редактирай</a> |
+    <a class="btn btn-primary" asp-action="Index">Върни се назад</a>
 </div>

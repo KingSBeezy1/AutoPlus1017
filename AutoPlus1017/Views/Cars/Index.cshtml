@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AutoPlus1017.Entities.Car>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Автомобили";
 }
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore
@@ -20,11 +20,31 @@
         width: 23rem;
         margin: 1rem;
     }
+
+    #1 {
+    }
 </style>
 @if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "admin"))
 {
     <h1>Коли</h1>
 
+    <select class="custom-select" style="width:30%;text-align:center">
+        <option selected>--------Филтрирай по свой избор---------</option>
+        <option id="1">Чисто Нов</option>
+        <option>Използвани</option>
+        <option>Газ</option>
+        <option>Бензин</option>
+        <option>Дизел</option>
+        <option>Цена</option>
+    </select>
+
+
+
+
+
+
+
+    <br />
     <p>
         <a asp-action="Create" class="btn btn-outline-success">Създай нов</a>
     </p>
@@ -133,6 +153,15 @@
 else if (SignInManager.IsSignedIn(User) == true)
 {
     <div class="row">
+        <select class="custom-select" style="width:30%;text-align:center">
+            <option selected>--------Филтрирай по свой избор---------</option>
+            <option id="1">Чисто Нов</option>
+            <option>Използвани</option>
+            <option>Газ</option>
+            <option>Бензин</option>
+            <option>Дизел</option>
+            <option>Цена</option>
+        </select>
         @foreach (var item in Model)
         {
             <div class="col-4">
@@ -156,6 +185,15 @@ else if (SignInManager.IsSignedIn(User) == true)
 }
 else
 {
+    <select class="custom-select" style="width:30%;text-align:center">
+        <option selected>--------Филтрирай по свой избор---------</option>
+        <option id="1">Чисто Нов</option>
+        <option>Използвани</option>
+        <option>Газ</option>
+        <option>Бензин</option>
+        <option>Дизел</option>
+        <option>Цена</option>
+    </select>
     <div class="row">
         @foreach (var item in Model)
         {
@@ -169,10 +207,10 @@ else
                         <p class="card-text">Година: @item.YearProduction</p>
                     </div>
                     <div class="card-body">
-                        
+
                         <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Детайли</a>
-                        <a asp-controller="Orders"asp-action="Create" class="btn btn-outline-success text">Купи</a>                        
-                   </div>
+                        <a asp-controller="Orders" asp-action="Create" class="btn btn-outline-success text">Купи</a>
+                    </div>
                 </div>
             </div>
         }

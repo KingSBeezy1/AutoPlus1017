@@ -21,33 +21,40 @@
         margin: 1rem;
     }
 
-    #1 {
+    #button12 {
+        width: 50px;
+        margin: 0 auto;
+        display: inline-block;
+        width: calc(90% - 4px);
+        margin: 0 auto;
+    }
+
+    .custom-select {
     }
 </style>
+<p id="button12">
+    <form asp-action="Index" >
+        <select name="filter" onchange="if (this.selectedIndex) onSelect();" class="custom-select" style="width:30%;text-align:center">
+            <option selected>------Филтрирай по свой избор-------</option>
+            <option id="1" value="Чисто нов">Чисто нов</option>
+            <option value="Използван">Използван</option>
+            <option value="Газ">Газ</option>
+            <option value="Бензин">Бензин</option>
+            <option value="Нафта">Нафта</option>
+            <option value="Цена">Цена</option>
+        </select>
+        <input class="btn btn-outline-success" type="submit" value="Филтрирай"/>     
+    </form>
+</p>
 @if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "admin"))
 {
+
     <h1>Коли</h1>
-
-    <select class="custom-select" style="width:30%;text-align:center">
-        <option selected>--------Филтрирай по свой избор---------</option>
-        <option id="1">Чисто Нов</option>
-        <option>Използвани</option>
-        <option>Газ</option>
-        <option>Бензин</option>
-        <option>Дизел</option>
-        <option>Цена</option>
-    </select>
-
-
-
-
-
-
-
-    <br />
     <p>
-        <a asp-action="Create" class="btn btn-outline-success">Създай нов</a>
+        <a asp-action="Create" class="btn btn-outline-primary">Създай нов</a>
     </p>
+    <br />
+
     <div class="row">
         @foreach (var item in Model)
         {
@@ -152,48 +159,31 @@
 }
 else if (SignInManager.IsSignedIn(User) == true)
 {
-    <div class="row">
-        <select class="custom-select" style="width:30%;text-align:center">
-            <option selected>--------Филтрирай по свой избор---------</option>
-            <option id="1">Чисто Нов</option>
-            <option>Използвани</option>
-            <option>Газ</option>
-            <option>Бензин</option>
-            <option>Дизел</option>
-            <option>Цена</option>
-        </select>
-        @foreach (var item in Model)
-        {
-            <div class="col-4">
+   
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-4">
 
-                <div class="card">
-                    <img class="card-img-top" src="@item.ThumbnailImagePath" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Brand @item.Model</h5>
-                        <p class="card-text">Описание: @item.Description</p>
-                        <p class="card-text">Година: @item.YearProduction</p>
-                    </div>
-                    <div class="card-body">
+            <div class="card">
+                <img class="card-img-top" src="@item.ThumbnailImagePath" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Brand @item.Model</h5>
+                    <p class="card-text">Описание: @item.Description</p>
+                    <p class="card-text">Година: @item.YearProduction</p>
+                </div>
+                <div class="card-body">
 
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Детайли</a>
-                        <a asp-controller="Orders" asp-action="Create" class="btn btn-outline-success text">Купи</a>
-                    </div>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Детайли</a>
+                    <a asp-controller="Orders" asp-action="Create" class="btn btn-outline-success text">Купи</a>
                 </div>
             </div>
-        }
-    </div>
+        </div>
+    }
+</div>
 }
 else
 {
-    <select class="custom-select" style="width:30%;text-align:center">
-        <option selected>--------Филтрирай по свой избор---------</option>
-        <option id="1">Чисто Нов</option>
-        <option>Използвани</option>
-        <option>Газ</option>
-        <option>Бензин</option>
-        <option>Дизел</option>
-        <option>Цена</option>
-    </select>
     <div class="row">
         @foreach (var item in Model)
         {
@@ -216,3 +206,7 @@ else
         }
     </div>
 }
+
+<script>
+
+</script>

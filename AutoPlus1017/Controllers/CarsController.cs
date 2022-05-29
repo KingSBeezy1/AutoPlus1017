@@ -22,11 +22,36 @@ namespace AutoPlus1017.Controllers
         }
 
         // GET: Cars
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string filter)
         {
-            return View(await _context.Cars.ToListAsync());
+            List<Car> filteredCars =await _context.Cars.ToListAsync(); 
+            switch (filter)
+            {
+                case "Чисто Нов":
+                    filteredCars = filteredCars.Where(c => c.Condition.ToString() == filter).ToList();
+                    break;
+                case "Използван":
+                    filteredCars = filteredCars.Where(c => c.Condition.ToString() == filter).ToList();
+                    break;
+                case "Газ":
+                    filteredCars = filteredCars.Where(c => c.Fuel.ToString() == filter).ToList();
+                    break;
+                case "Нафта":
+                    filteredCars = filteredCars.Where(c => c.Fuel.ToString() == filter).ToList();
+                    break;
+                case "Бензин":
+                    filteredCars = filteredCars.Where(c => c.Fuel.ToString() == filter).ToList();
+                    break;
+                case "Цена":
+                    filteredCars = filteredCars.OrderBy(c => c.Price).ToList();
+                    break;
+            }
+            return View(filteredCars);
+            
+            
+            
         }
-
+ 
         // GET: Cars/Details/5
         public async Task<IActionResult> Details(int? id)
         {

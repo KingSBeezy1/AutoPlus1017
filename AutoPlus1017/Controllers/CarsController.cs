@@ -47,9 +47,7 @@ namespace AutoPlus1017.Controllers
                     break;
             }
             return View(filteredCars);
-            
-            
-            
+           
         }
  
         // GET: Cars/Details/5

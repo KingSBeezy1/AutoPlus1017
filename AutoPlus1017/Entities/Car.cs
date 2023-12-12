@@ -31,7 +31,7 @@ namespace AutoPlus1017.Entities
         [Required(ErrorMessage = "Моля въведи цена на автомобила")]
         [Display(Name = "Цена")]
         [Column(TypeName = "decimal(10,2)")]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         [Required(ErrorMessage = "Моля въведи какво е състоянието на автомобила")]
         [Display(Name = "Състояние на автомобила")]
         public TypeCondition Condition { get; set; }

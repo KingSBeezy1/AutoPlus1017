@@ -25,9 +25,11 @@ namespace AutoPlus1017.Controllers
         public async Task<IActionResult> Index(string filter)
         {
             List<Car> filteredCars =await _context.Cars.ToListAsync(); 
+            
             switch (filter)
             {
-                case "Чисто Нов":
+                //ToDo: Extract floating strings into constants
+                case "ЧистоНов":
                     filteredCars = filteredCars.Where(c => c.Condition.ToString() == filter).ToList();
                     break;
                 case "Използван":
@@ -42,7 +44,10 @@ namespace AutoPlus1017.Controllers
                 case "Бензин":
                     filteredCars = filteredCars.Where(c => c.Fuel.ToString() == filter).ToList();
                     break;
-                case "Цена":
+                case "ЦенаНизходящ":
+                    filteredCars = filteredCars.OrderByDescending(c => c.Price).ToList();
+                    break;
+                case "ЦенаВъзходящ":
                     filteredCars = filteredCars.OrderBy(c => c.Price).ToList();
                     break;
             }

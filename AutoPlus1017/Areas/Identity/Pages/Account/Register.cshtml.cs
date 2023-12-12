@@ -74,10 +74,13 @@ namespace AutoPlus1017.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
             
             [Required(ErrorMessage = "Въведете град")]
+            [Display(Name = "Град")]
             public string City { get; set; }
+            [Display(Name = "Дата на регистрация")]
             public DateTime RegisterDate { get; set; }
             [RegularExpression(@"(\+)?(359|0)8[789]\d{1}(|-| )\d{3}(|-| )\d{3}")]
             [DataType(DataType.PhoneNumber)]
+            [Display(Name = "Телефонен номер")]
             public string PhoneNumber { get; set; }
         }
 

@@ -36,12 +36,13 @@
     <form asp-action="Index" >
         <select name="filter" onchange="if (this.selectedIndex) onSelect();" class="custom-select" style="width:30%;text-align:center">
             <option selected>------Филтрирай по свой избор-------</option>
-            <option id="1" value="Чисто нов">Чисто нов</option>
+            <option id="1" value="ЧистоНов">Чисто нов</option>
             <option value="Използван">Използван</option>
             <option value="Газ">Газ</option>
             <option value="Бензин">Бензин</option>
             <option value="Нафта">Нафта</option>
-            <option value="Цена">Цена</option>
+            <option value="ЦенаНизходящ">Цена(низходящ)</option>
+            <option value="ЦенаВъзходящ">Цена(възходящ)</option>
         </select>
         <input class="btn btn-outline-success" type="submit" value="Филтрирай"/>     
     </form>
@@ -66,6 +67,7 @@
                         <h5 class="card-title">@item.Brand @item.Model</h5>
                         <p class="card-text">Описание: @item.Description</p>
                         <p class="card-text">Година: @item.YearProduction</p>
+                        <p class="card-text">Цена: @item.Price</p>
                         
                     </div>
                     <div class="card-body">
@@ -172,6 +174,7 @@ else if (SignInManager.IsSignedIn(User) == true)
                     <h5 class="card-title">@item.Brand @item.Model</h5>
                     <p class="card-text">Описание: @item.Description</p>
                     <p class="card-text">Година: @item.YearProduction</p>
+                        <p class="card-text">Цена: @item.Price</p>
                 </div>
                 <div class="card-body">
 
@@ -196,6 +199,7 @@ else
                         <h5 class="card-title">@item.Brand @item.Model</h5>
                         <p class="card-text">Описание: @item.Description</p>
                         <p class="card-text">Година: @item.YearProduction</p>
+                        <p class="card-text">Цена: @item.Price</p>
                     </div>
                     <div class="card-body">
 
